@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Form
-from database import SessionLocal, engine
-from models import Project, Base
-from emailer import send_project_email
+from app.database import SessionLocal, engine
+from app.models import Project, Base
+from app.emailer import send_project_email
 
 app = FastAPI()
 
