@@ -2,6 +2,11 @@ from fastapi import FastAPI, Form
 from app.database import SessionLocal, engine
 from app.models import Project, Base
 from app.emailer import send_project_email
+import os
+
+if os.getenv("RAILWAY_ENVIRONMENT"):
+    print("Running on Railway")
+
 
 app = FastAPI()
 
@@ -25,7 +30,7 @@ def submit_project(
     db.commit()
     db.refresh(project)
 
-    send_project_email(project)
+    # send_project_email(project)
 
     return {"status": "success"}
 
